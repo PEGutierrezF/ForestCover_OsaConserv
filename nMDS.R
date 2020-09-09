@@ -59,3 +59,29 @@ p1 <- p + geom_point(data=data.scores,aes(x=NMDS1,y=NMDS2,
   scale_color_manual(values=c("#00AFBB", "#FC4E07")) + 
   scale_shape_manual(values=c(15, 17))
 p1 
+
+
+
+#install.packages("labdsv")
+#install.packages("indicspecies")
+install.packages("labdsv")
+library("indicspecies")
+library("labdsv")
+
+library(vegan)
+library(MASS)
+library(labdsv)
+library(cluster)
+library(indicspecies)
+
+ind_species<-multipatt(taxa,matrix.frm$Locality,max.order=2,
+                       duleg=TRUE,func="IndVal.g",control=how(nperm=5000))
+ind_species
+summary(ind_species)
+
+
+
+
+(sim <- with(matrix.frm, simper(taxa, Locality)))
+summary(sim)
+
